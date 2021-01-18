@@ -1,0 +1,3 @@
+[bandit]
+targets: pelican_stat
+exclude: tests

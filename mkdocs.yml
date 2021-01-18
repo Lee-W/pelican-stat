@@ -1,0 +1,9 @@
+site_name: pelican-stat
+nav:
+  - Home: README.md
+  - Contributing: contributing.md
+theme:
+  name: 'material'
+repo_url: http://github.com/Lee-W/pelican_stat
+remote_branch: gh-pages
+remote_name: origin
