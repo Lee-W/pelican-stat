@@ -97,6 +97,8 @@ license = "MIT license"
 
 [tool.poetry.dependencies]
 python = "^3.7"
+pelican = "4.5.4"
+Markdown = "^3.3.3"
 
 [tool.poetry.dev-dependencies]
 # task management
@@ -123,6 +125,9 @@ pre-commit = "^2.2.0"
 # documentation
 mkdocs = "^1.1"
 mkdocs-material = "^5.0.1"
+
+[tool.poetry.scripts]
+pelican-stat = "pelican_stat.pelican_stat:main"
 
 [build-system]
 requires = ["poetry>=1.0.0"]
