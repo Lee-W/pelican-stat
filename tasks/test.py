@@ -15,4 +15,6 @@ def run(ctx, allow_no_tests=False):
 @task
 def cov(ctx):
     """Run test covreage check"""
-    ctx.run(f"{VENV_PREFIX} pytest --cov=pelican_stat tests/", pty=True)
+    ctx.run(
+        f"{VENV_PREFIX} pytest --cov=pelican_stat --cov-fail-under=0.9 tests/", pty=True
+    )
