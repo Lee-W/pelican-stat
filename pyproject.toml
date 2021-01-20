@@ -91,7 +91,8 @@ norecursedirs = [
 [tool.poetry]
 name = "pelican_stat"
 version = "0.1.0"
-description = ""
+description = "Command line tool that generates pelican article statistics"
+readme = "docs/README.md"
 authors = ["Wei Lee <weilee.rx@gmail.com>"]
 license = "MIT license"
 
@@ -99,6 +100,7 @@ license = "MIT license"
 python = "^3.7"
 pelican = "4.5.4"
 Markdown = "^3.3.3"
+click = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
 # task management
@@ -128,7 +130,7 @@ mkdocs-material = "^5.0.1"
 pytest-regressions = "^2.1.1"
 
 [tool.poetry.scripts]
-pelican-stat = "pelican_stat.pelican_stat:main"
+pelican-stat = "pelican_stat.pelican_stat"
 
 [build-system]
 requires = ["poetry>=1.0.0"]
