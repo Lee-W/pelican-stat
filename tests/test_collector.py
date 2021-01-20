@@ -1,4 +1,5 @@
 import pelican
+
 from pelican_stat import collector
 
 
