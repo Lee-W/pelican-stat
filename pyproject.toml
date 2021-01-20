@@ -131,7 +131,7 @@ mkdocs-material = "^5.0.1"
 pytest-regressions = "^2.1.1"
 
 [tool.poetry.scripts]
-pelican-stat = "pelican_stat.pelican_stat"
+pelican-stat = "pelican_stat.__main__:main"
 
 [build-system]
 requires = ["poetry>=1.0.0"]
