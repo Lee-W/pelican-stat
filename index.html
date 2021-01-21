@@ -353,15 +353,26 @@
                 
                 
                 <p><a href="http://makeapullrequest.com"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" /></a>
-<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a></p>
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
+<a href="https://img.shields.io/pypi/v/pelican-stat"><img alt="pypi-stat" src="https://img.shields.io/pypi/v/pelican-stat" /></a></p>
 <h1 id="pelican_stat">pelican_stat</h1>
 <p>cli tool for generating pelican article statistics</p>
 <h2 id="getting-started">Getting Started</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li><a href="https://www.python.org/downloads/">Python</a></li>
+<li><a href="https://github.com/pipxproject/pipx">pipx</a></li>
 </ul>
 <h2 id="usage">Usage</h2>
+<p>As I pin pelican to 4.5.4 for API consistency, I suggest using pipx (or any other virtual environment mechanism) to install this tool.</p>
+<pre><code class="language-sh">pipx install pelican_stat
+</code></pre>
+<p>After installation, you can see the detail by add <code>--help</code> flag.</p>
+<p>e.g.,</p>
+<pre><code class="language-sh">pelican-stat --help
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">pelican-stat plot --help
+</code></pre>
 <h2 id="contributing">Contributing</h2>
 <p>See <a href="contributing/">Contributing</a></p>
 <h2 id="authors">Authors</h2>
