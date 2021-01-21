@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import List, Union, Dict
+from typing import Dict, List, Union
 
 import pelican
 
