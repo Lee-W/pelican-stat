@@ -98,10 +98,12 @@ authors = ["Wei Lee <weilee.rx@gmail.com>"]
 license = "MIT license"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.7.1"
 pelican = "4.5.4"
 Markdown = "^3.3.3"
 click = "^7.1.2"
+plotly = "^4.14.3"
+pandas = "^1.2.1"
 
 [tool.poetry.dev-dependencies]
 # task management
@@ -129,6 +131,7 @@ pre-commit = "^2.2.0"
 mkdocs = "^1.1"
 mkdocs-material = "^5.0.1"
 pytest-regressions = "^2.1.1"
+ipython = "^7.19.0"
 
 [tool.poetry.scripts]
 pelican-stat = "pelican_stat.__main__:main"
