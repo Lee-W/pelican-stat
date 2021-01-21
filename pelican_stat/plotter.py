@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Optional, Union
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -45,10 +45,6 @@ class PelicanDataPlotter:
                 )
         else:
             fig.add_trace(
-                go.Scatter(
-                    x=plot_df.timestamp,
-                    y=plot_df.index,
-                    mode="lines+markers",
-                )
+                go.Scatter(x=plot_df.timestamp, y=plot_df.index, mode="lines+markers",)
             )
         fig.write_html(output_path)

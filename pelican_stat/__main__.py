@@ -15,19 +15,17 @@ def main() -> None:
 
 @main.command()
 @click.argument(
-    "pelican_conf_path",
-    required=True,
-    default="pelicanconf.py",
+    "pelican_conf_path", required=True, default="pelicanconf.py",
 )
 @click.argument(
-    "output_path",
-    required=True,
-    default="article_metadata.json",
+    "output_path", required=True, default="article_metadata.json",
 )
 def collect(pelican_conf_path: str, output_path: str) -> None:
     """Collect data from pelican project and export article metadata"""
     if not os.path.exists(pelican_conf_path):
-        print(f"Configuration file {pelican_conf_path} does not exists", file=sys.stderr)
+        print(
+            f"Configuration file {pelican_conf_path} does not exists", file=sys.stderr
+        )
         sys.exit(1)
 
     data_collector = PelicanArticleDataCollector(pelican_conf_path)
@@ -36,14 +34,10 @@ def collect(pelican_conf_path: str, output_path: str) -> None:
 
 @main.command()
 @click.argument(
-    "pelican_conf_path",
-    required=True,
-    default="pelicanconf.py",
+    "pelican_conf_path", required=True, default="pelicanconf.py",
 )
 @click.argument(
-    "output_path",
-    required=True,
-    default="trend_plot.html",
+    "output_path", required=True, default="trend_plot.html",
 )
 @click.option(
     "--year", required=False, help="plot only the data for certain year", type=int
@@ -62,7 +56,9 @@ def plot(
 ) -> None:
     """Draw trend plot based on the frequency of new posts"""
     if not os.path.exists(pelican_conf_path):
-        print(f"Configuration file {pelican_conf_path} does not exists", file=sys.stderr)
+        print(
+            f"Configuration file {pelican_conf_path} does not exists", file=sys.stderr
+        )
         sys.exit(1)
 
     data_collector = PelicanArticleDataCollector(pelican_conf_path)
