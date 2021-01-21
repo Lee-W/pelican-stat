@@ -58,7 +58,7 @@ def plot(
     year: Optional[int] = None,
     groupby_category: bool = False,
 ) -> None:
-    """Collect data from pelican project and export article metadata"""
+    """Draw trend plot based on the frequency of new posts"""
     if not os.path.exists(pelican_conf_path):
         raise Exception(f"Configuration file {pelican_conf_path} does not exists")
 
