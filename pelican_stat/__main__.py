@@ -1,4 +1,5 @@
 import os
+import sys
 from typing import Optional
 
 import click
@@ -26,7 +27,8 @@ def main() -> None:
 def collect(pelican_conf_path: str, output_path: str) -> None:
     """Collect data from pelican project and export article metadata"""
     if not os.path.exists(pelican_conf_path):
-        raise Exception(f"Configuration file {pelican_conf_path} does not exists")
+        print(f"Configuration file {pelican_conf_path} does not exists", file=sys.stderr)
+        sys.exit(1)
 
     data_collector = PelicanArticleDataCollector(pelican_conf_path)
     data_collector.export(output_path)
@@ -60,7 +62,8 @@ def plot(
 ) -> None:
     """Draw trend plot based on the frequency of new posts"""
     if not os.path.exists(pelican_conf_path):
-        raise Exception(f"Configuration file {pelican_conf_path} does not exists")
+        print(f"Configuration file {pelican_conf_path} does not exists", file=sys.stderr)
+        sys.exit(1)
 
     data_collector = PelicanArticleDataCollector(pelican_conf_path)
     articles_info = data_collector.extract_articles_info()
