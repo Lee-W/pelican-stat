@@ -1,6 +1,6 @@
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.2.0"
+version = "0.3.0"
 tag_format = "$version"
 version_files = [
     "pyproject.toml:version"
@@ -91,7 +91,7 @@ norecursedirs = [
 
 [tool.poetry]
 name = "pelican_stat"
-version = "0.2.0"
+version = "0.3.0"
 description = "Command line tool that generates pelican article statistics"
 readme = "docs/README.md"
 authors = ["Wei Lee <weilee.rx@gmail.com>"]

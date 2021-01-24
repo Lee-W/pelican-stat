@@ -1,4 +1,10 @@
 # Changelog
+## 0.3.0 (2021-01-24)
+
+### Feat
+
+- **plot**: enable loading from collected article metadata
+
 ## 0.2.0 (2021-01-21)
 
 ### Refactor
