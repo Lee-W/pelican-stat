@@ -21,6 +21,7 @@ jobs:
         run: |
           uv tool install invoke
           inv env.init-dev --no-pre-commit
+
       - name: Run pre-commit hooks
         run: |
           SKIP=no-commit-to-branch,commitizen-branch inv run-pre-commit-hooks

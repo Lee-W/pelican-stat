@@ -21,6 +21,7 @@ jobs:
         run: |
           uv tool install invoke
           inv env.init-dev --no-pre-commit
+
       - name: Build package
         run: |
           inv build.dist
