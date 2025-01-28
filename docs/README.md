@@ -14,14 +14,16 @@ CLI tool for generating pelican article statistics
 
 ### Prerequisites
 
-* [Python](https://www.python.org/downloads/)
+* [uv tool]
+
+[uv tool]: https://docs.astral.sh/uv/concepts/tools/
 
 ## Usage
 
-As I pin pelican to 4.5.4 for API consistency, I suggest using pipx (or any other virtual environment mechanism) to install this tool.
+For installing this tool, I suggest using [uv tool], pipx or something similar.
 
 ```sh
-pipx install pelican_stat
+uv tool install pelican_stat
 ```
 
 After installation, you can see the detail by add `--help` flag.
@@ -30,6 +32,12 @@ e.g.,
 
 ```sh
 pelican-stat --help
+```
+
+or
+
+```sh
+pelican-stat collect --help
 ```
 
 or
