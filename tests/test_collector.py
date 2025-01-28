@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pelican
 
 from pelican_stat import collector
@@ -11,9 +13,7 @@ def test_get_pelican_instance():
 
 
 def test_collect_articles():
-    data_collector = collector.PelicanArticleDataCollector(
-        "tests/sample_pelican_project/pelicanconf.py"
-    )
+    data_collector = collector.PelicanArticleDataCollector("tests/sample_pelican_project/pelicanconf.py")
     data_collector.collect_articles()
 
     assert len(data_collector.articles) == 1
@@ -27,13 +27,11 @@ def test_collect_articles():
 def test_export(tmp_path, data_regression):
     output_path = tmp_path / "result.json"
 
-    data_collector = collector.PelicanArticleDataCollector(
-        "tests/sample_pelican_project/pelicanconf.py"
-    )
+    data_collector = collector.PelicanArticleDataCollector("tests/sample_pelican_project/pelicanconf.py")
     data_collector.collect_articles()
     data_collector.export(output_path)
 
-    with open(output_path, "r") as output_file:
+    with open(output_path) as output_file:
         output_data = output_file.read()
 
     data_regression.check(output_data)

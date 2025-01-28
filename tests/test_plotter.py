@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 import pytest
@@ -19,7 +21,7 @@ sample_articles_info = [
 
 
 @pytest.mark.parametrize(
-    "year, groupby_category", ((None, False), (2020, False), (2020, True), (None, True))
+    ("year", "groupby_category"), [(None, False), (2020, False), (2020, True), (None, True)]
 )
 def test_draw_trend_plot(tmpdir, year, groupby_category):
     """Test whether all the valid parameter combination can generate plot
@@ -30,8 +32,6 @@ def test_draw_trend_plot(tmpdir, year, groupby_category):
         output_path = tmpdir / "test_result.html"
 
         data_plotter = plotter.PelicanDataPlotter(sample_articles_info)
-        data_plotter.draw_trend_plot(
-            output_path, year=year, groupby_category=groupby_category
-        )
+        data_plotter.draw_trend_plot(output_path, year=year, groupby_category=groupby_category)
         assert os.path.exists(output_path)
         os.remove(output_path)
