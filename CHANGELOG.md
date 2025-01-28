@@ -3,7 +3,7 @@
 
 ### Fix
 
-- catch the case that both pelican_conf and metdata path are not provided
+- catch the case that both pelican_conf and metadata path are not provided
 
 ## 0.3.0 (2021-01-24)
 
