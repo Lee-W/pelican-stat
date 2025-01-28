@@ -15,7 +15,7 @@
 
 ## Checklist:
 - [ ] Add test cases to all the changes you introduce
-- [ ] Run `inv lint` locally to ensure all linter checks pass
+- [ ] Run `inv style` locally to ensure all linter checks pass
 - [ ] Run `inv test` locally to ensure all test cases pass
 - [ ] Run `inv secure` locally to ensure no major vulnerability is introduced
 - [ ] Update the documentation if necessary
@@ -32,7 +32,7 @@ Steps to reproduce the behavior:
 <!--A clear and concise description of what you expected to happen-->
 
 ## Related Issue
-<!--If applicable, refernce to the issue related to this pull request.-->
+<!--If applicable, reference to the issue related to this pull request.-->
 
 ## Additional context
 <!--Add any other context or screenshots about the pull request here.-->
