@@ -1,5 +1,5 @@
 [project]
-name = "pelican_stat"
+name = "pelican-stat"
 version = "0.3.1"
 authors = [{ name = "Wei Lee", email = "weilee.rx@gmail.com" }]
 description = "cli tool for generating pelican article statistics"
@@ -11,6 +11,21 @@ dependencies = [
     "pandas>=2.2.3",
     "pelican[markdown]>=4.11.0",
     "plotly>=5.24.1",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
 ]
 
 [project.scripts]
