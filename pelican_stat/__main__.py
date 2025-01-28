@@ -96,6 +96,8 @@ def plot(
     elif articles_metadata_path:
         with open(articles_metadata_path) as metadata_file:
             articles_info = json.load(metadata_file)
+    else:
+        raise ValueError("Either pelican conf path or metadata path should be provided.")
 
     data_plotter = PelicanDataPlotter(articles_info)
     data_plotter.draw_trend_plot(output_path, year=year, groupby_category=groupby_category)
