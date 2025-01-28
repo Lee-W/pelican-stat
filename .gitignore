@@ -145,3 +145,4 @@ cython_debug/
 
 result.json
 article_metadata.json
+trend_plot.html
