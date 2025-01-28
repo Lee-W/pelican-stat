@@ -1,7 +1,8 @@
+from __future__ import annotations
+
 import json
 import os
 import sys
-from typing import Optional
 
 import click
 
@@ -16,17 +17,19 @@ def main() -> None:
 
 @main.command()
 @click.argument(
-    "pelican_conf_path", required=True, default="pelicanconf.py",
+    "pelican_conf_path",
+    required=True,
+    default="pelicanconf.py",
 )
 @click.argument(
-    "output_path", required=True, default="article_metadata.json",
+    "output_path",
+    required=True,
+    default="article_metadata.json",
 )
 def collect(pelican_conf_path: str, output_path: str) -> None:
     """Collect data from pelican project and export article metadata"""
     if not os.path.exists(pelican_conf_path):
-        print(
-            f"Configuration file {pelican_conf_path} does not exists", file=sys.stderr
-        )
+        print(f"Configuration file {pelican_conf_path} does not exists", file=sys.stderr)
         sys.exit(1)
 
     data_collector = PelicanArticleDataCollector(pelican_conf_path)
@@ -56,17 +59,18 @@ def collect(pelican_conf_path: str, output_path: str) -> None:
     default="trend_plot.html",
     help="path for the output plot",
 )
+@click.option("--year", required=False, help="plot only the data for certain year", type=int)
 @click.option(
-    "--year", required=False, help="plot only the data for certain year", type=int
-)
-@click.option(
-    "--groupby-category", required=False, help="group data by categoyy", is_flag=True,
+    "--groupby-category",
+    required=False,
+    help="group data by category",
+    is_flag=True,
 )
 def plot(
-    pelican_conf_path: str = None,
-    articles_metadata_path: str = None,
+    pelican_conf_path: str = "",
+    articles_metadata_path: str = "",
     output_path: str = "trend_plot.html",
-    year: Optional[int] = None,
+    year: int | None = None,
     groupby_category: bool = False,
 ) -> None:
     """Draw trend plot based on the frequency of new posts"""
@@ -90,13 +94,13 @@ def plot(
         data_collector = PelicanArticleDataCollector(pelican_conf_path)
         articles_info = data_collector.extract_articles_info()
     elif articles_metadata_path:
-        with open(articles_metadata_path, "r") as metadata_file:
+        with open(articles_metadata_path) as metadata_file:
             articles_info = json.load(metadata_file)
+    else:
+        raise ValueError("Either conf path or metadata path should be provided.")
 
     data_plotter = PelicanDataPlotter(articles_info)
-    data_plotter.draw_trend_plot(
-        output_path, year=year, groupby_category=groupby_category
-    )
+    data_plotter.draw_trend_plot(output_path, year=year, groupby_category=groupby_category)
 
 
 if __name__ == "__main__":
