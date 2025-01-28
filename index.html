@@ -443,15 +443,18 @@
 <h2 id="getting-started">Getting Started</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li><a href="https://www.python.org/downloads/">Python</a></li>
+<li><a href="https://docs.astral.sh/uv/concepts/tools/">uv tool</a></li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>As I pin pelican to 4.5.4 for API consistency, I suggest using pipx (or any other virtual environment mechanism) to install this tool.</p>
-<pre><code class="language-sh">pipx install pelican_stat
+<p>For installing this tool, I suggest using <a href="https://docs.astral.sh/uv/concepts/tools/">uv tool</a>, pipx or something similar.</p>
+<pre><code class="language-sh">uv tool install pelican_stat
 </code></pre>
 <p>After installation, you can see the detail by add <code>--help</code> flag.</p>
 <p>e.g.,</p>
 <pre><code class="language-sh">pelican-stat --help
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">pelican-stat collect --help
 </code></pre>
 <p>or</p>
 <pre><code class="language-sh">pelican-stat plot --help
