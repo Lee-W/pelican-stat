@@ -1,10 +1,9 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
-[![Github Actions](https://github.com/Lee-W/pelican_stat/actions/workflows/python-check.yaml/badge.svg)](https://github.com/Lee-W/pelican_stat/actions/workflows/python-check.yaml)
-
+[![GitHub Actions](https://github.com/Lee-W/pelican-stat/actions/workflows/python-check.yaml/badge.svg)](https://github.com/Lee-W/pelican-stat/actions/workflows/python-check.yaml)
 [![PyPI Package latest release](https://img.shields.io/pypi/v/pelican_stat.svg?style=flat-square)](https://pypi.org/project/pelican_stat/)
 [![PyPI Package download count (per month)](https://img.shields.io/pypi/dm/pelican_stat?style=flat-square)](https://pypi.org/project/pelican_stat/)
-[![Supported versions](https://img.shields.io/pypi/pyversions/pelican_stat.svg?style=flat-square)](https://pypi.org/project/pelican_stat/)
+[![Supported versions](https://img.shields.io/pypi/pyversions/pelican-stat.svg?style=flat-square)](https://pypi.org/project/pelican_stat/)
 
 # pelican_stat
 
