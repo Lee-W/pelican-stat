@@ -1,6 +1,6 @@
 [project]
 name = "pelican_stat"
-version = "0.3.0"
+version = "0.3.1"
 authors = [{ name = "Wei Lee", email = "weilee.rx@gmail.com" }]
 description = "cli tool for generating pelican article statistics"
 license = { file = "LICENSE" }
@@ -43,7 +43,7 @@ build-backend = "hatchling.build"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.3.0"
+version = "0.3.1"
 tag_format = "$version"
 version_files = ["pyproject.toml:version"]
 

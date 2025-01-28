@@ -1,4 +1,10 @@
 # Changelog
+## 0.3.1 (2025-01-28)
+
+### Fix
+
+- catch the case that both pelican_conf and metdata path are not provided
+
 ## 0.3.0 (2021-01-24)
 
 ### Feat
