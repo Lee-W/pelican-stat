@@ -20,8 +20,8 @@ class PelicanArticleDataCollector:
 
         cls = settings["PELICAN_CLASS"]
         if isinstance(cls, str):
-            module, cls_name = cls.rsplit(".", 1)
-            module = __import__(module)
+            module_name, cls_name = cls.rsplit(".", 1)
+            module = __import__(module_name)
             cls = getattr(module, cls_name)
 
         return cls(settings)
