@@ -48,7 +48,7 @@ test = [
 ]
 style = ["mypy>=1.14.1", "ruff>=0.9.2"]
 security = ["bandit>=1.2.2", "pip-audit>=2.7.3"]
-git = ["commitizen>=4.1.0", "pre-commit>=4.0.1"]
+git = ["commitizen>=4.6.0", "pre-commit>=4.0.1"]
 doc = ["mkdocs>=1.6.1", "mkdocs-material>=9.5.50"]
 
 [build-system]
@@ -60,7 +60,7 @@ build-backend = "hatchling.build"
 name = "cz_conventional_commits"
 version = "0.3.2"
 tag_format = "$version"
-version_files = ["pyproject.toml:version"]
+version_provider = "uv"
 
 
 [tool.mypy]
