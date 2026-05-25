@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/Lee-W/cookiecutter-python-template",
-  "commit": "7f95891c20bc199acd36171466891a85f0813368",
+  "commit": "a9299a41b9110a0f0851d3895b9da401ec8dfb8b",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -38,7 +38,8 @@
         "mkdocs": "1.6.1",
         "mkdocs_material": "9.5.50"
       },
-      "_template": "https://github.com/Lee-W/cookiecutter-python-template"
+      "_template": "https://github.com/Lee-W/cookiecutter-python-template",
+      "_commit": "a9299a41b9110a0f0851d3895b9da401ec8dfb8b"
     }
   },
   "directory": null
