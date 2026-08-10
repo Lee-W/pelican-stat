@@ -290,9 +290,42 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#pelican-plugin" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage
+      Pelican plugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pelican plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-statistics-shortcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing statistics shortcode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command-line usage
     </span>
   </a>
   
@@ -397,9 +430,42 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#pelican-plugin" class="md-nav__link">
     <span class="md-ellipsis">
-      Usage
+      Pelican plugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pelican plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-statistics-shortcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing statistics shortcode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command-line usage
     </span>
   </a>
   
@@ -449,13 +515,92 @@
 <a href="https://pypi.org/project/pelican_stat/"><img alt="PyPI Package download count (per month)" src="https://img.shields.io/pypi/dm/pelican_stat?style=flat-square" /></a>
 <a href="https://pypi.org/project/pelican_stat/"><img alt="Supported versions" src="https://img.shields.io/pypi/pyversions/pelican-stat.svg?style=flat-square" /></a></p>
 <h1 id="pelican_stat">pelican_stat</h1>
-<p>CLI tool for generating pelican article statistics</p>
+<p>Generate Pelican article statistics from the command line or expose them to
+Pelican themes and content through a plugin.</p>
 <h2 id="getting-started">Getting Started</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li><a href="https://docs.astral.sh/uv/concepts/tools/">uv tool</a></li>
 </ul>
-<h2 id="usage">Usage</h2>
+<h2 id="pelican-plugin">Pelican plugin</h2>
+<p>Install <code>pelican_stat</code> in the same environment as your Pelican site:</p>
+<pre><code class="language-sh">uv add pelican_stat
+</code></pre>
+<p>Then enable the plugin in <code>pelicanconf.py</code>:</p>
+<pre><code class="language-python">PLUGINS = [
+    &quot;pelican.plugins.stat&quot;,
+]
+</code></pre>
+<p>The plugin adds these values to the template context:</p>
+<ul>
+<li><code>pelican_stat_word_count</code>: a mapping containing <code>post_count</code>,
+  <code>cjk_char_count</code>, <code>english_word_count</code>, <code>total_char_count</code>,
+  <code>writing_years</code>, <code>average_chars_per_article</code>, and
+  <code>median_chars_per_article</code>.</li>
+<li><code>pelican_stat_trend_plot_html</code>: a Plotly HTML fragment. Render it with the
+  Jinja <code>safe</code> filter and make sure the theme loads Plotly.js.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-jinja2">{{ pelican_stat_word_count.total_char_count }}
+{{ pelican_stat_trend_plot_html | safe }}
+</code></pre>
+<h3 id="writing-statistics-shortcode">Writing statistics shortcode</h3>
+<p>In Markdown content, put the full widget on its own line:</p>
+<pre><code class="language-text">{% writing_stats %}
+</code></pre>
+<p>The full widget shows CJK characters, English words, total characters,
+average characters per post, and median characters per post. A compact
+variant shows only total and average characters:</p>
+<pre><code class="language-text">{% writing_stats compact %}
+</code></pre>
+<p>The widget includes scoped styles and chooses its labels from the content's
+<code>Lang</code> metadata, then <code>DEFAULT_LANG</code>, and finally English. English (<code>en</code>) and
+Taiwanese Mandarin (<code>zh-TW</code>) labels are built in; language matching is
+case-insensitive. Other language tags, including bare <code>zh</code>, fall back to
+English.</p>
+<h3 id="plugin-settings">Plugin settings</h3>
+<p>All settings are optional and belong in <code>pelicanconf.py</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PELICAN_STAT_SHORTCODE</code></td>
+<td><code>"writing_stats"</code></td>
+<td>Changes the shortcode name. For example, <code>"blog_stats"</code> enables <code>{% blog_stats %}</code> and <code>{% blog_stats compact %}</code>.</td>
+</tr>
+<tr>
+<td><code>PELICAN_STAT_LABELS</code></td>
+<td><code>{}</code></td>
+<td>Partially overrides the built-in labels. Use a mapping keyed by <code>en</code> or <code>zh-TW</code>, with statistic field names as the nested keys.</td>
+</tr>
+<tr>
+<td><code>PELICAN_STAT_INCLUDE_CODE_BLOCKS</code></td>
+<td><code>False</code></td>
+<td>Includes text inside block-level <code>&lt;pre&gt;</code> elements in word and character statistics. Inline <code>&lt;code&gt;</code> text is always included.</td>
+</tr>
+</tbody>
+</table>
+<p>Label overrides are merged with the selected built-in locale, so unspecified
+labels keep their defaults:</p>
+<pre><code class="language-python">PELICAN_STAT_LABELS = {
+    &quot;en&quot;: {
+        &quot;total_char_count&quot;: &quot;Characters Written&quot;,
+    },
+    &quot;zh-TW&quot;: {
+        &quot;total_char_count&quot;: &quot;累積字元數&quot;,
+        &quot;average_chars_per_article&quot;: &quot;平均每篇字元數&quot;,
+    },
+}
+</code></pre>
+<p>The available label keys are the seven keys listed under
+<code>pelican_stat_word_count</code> above.</p>
+<h2 id="command-line-usage">Command-line usage</h2>
 <p>For installing this tool, I suggest using <a href="https://docs.astral.sh/uv/concepts/tools/">uv tool</a>, pipx or something similar.</p>
 <pre><code class="language-sh">uv tool install pelican_stat
 </code></pre>
@@ -468,6 +613,9 @@
 </code></pre>
 <p>or</p>
 <pre><code class="language-sh">pelican-stat plot --help
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">pelican-stat wordcount --help
 </code></pre>
 <h2 id="contributing">Contributing</h2>
 <p>See <a href="contributing/">Contributing</a></p>
