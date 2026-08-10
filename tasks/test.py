@@ -18,4 +18,4 @@ def run(ctx: Context, allow_no_tests: bool = False) -> None:
 @task
 def cov(ctx: Context) -> None:
     """Run test coverage check"""
-    ctx.run(f"{VENV_PREFIX} pytest --cov=pelican_stat tests/", pty=True)
+    ctx.run(f"{VENV_PREFIX} pytest --cov=pelican.plugins.stat tests/", pty=True)

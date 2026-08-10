@@ -2,14 +2,15 @@
 name = "pelican-stat"
 version = "0.3.2"
 authors = [{ name = "Wei Lee", email = "weilee.rx@gmail.com" }]
-description = "cli tool for generating pelican article statistics"
+description = "Pelican plugin and CLI for generating article statistics"
 license = { file = "LICENSE" }
 readme = "docs/README.md"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.11,<4.0"
 dependencies = [
+    "beautifulsoup4>=4.13.0",
     "click>=8.1.8",
     "pandas>=2.2.3",
-    "pelican[markdown]>=4.11.0",
+    "pelican[markdown]>=4.12.0",
     "plotly>=6.0.0",
 ]
 classifiers = [
@@ -20,16 +21,15 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: Implementation :: CPython",
 ]
 
 [project.scripts]
-pelican-stat = "pelican_stat.__main__:main"
+pelican-stat = "pelican.plugins.stat.__main__:main"
 
 [project.urls]
 Documentation = "https://github.com/Lee-W/pelican_stat/blob/docs/README.md"
@@ -52,8 +52,12 @@ git = ["commitizen>=4.6.0", "pre-commit>=4.0.1"]
 doc = ["mkdocs>=1.6.1", "mkdocs-material>=9.5.50"]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build >= 0.11.25, <0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "pelican.plugins.stat"
+module-root = "src"
 
 
 [tool.commitizen]
@@ -61,10 +65,13 @@ name = "cz_conventional_commits"
 version = "0.3.2"
 tag_format = "$version"
 version_provider = "uv"
+major_version_zero = true
 
 
 [tool.mypy]
-files = ["pelican_stat", "tests"]
+files = ["src", "tests"]
+mypy_path = "src"
+explicit_package_bases = true
 ignore_missing_imports = true
 follow_imports = "silent"
 warn_redundant_casts = true
@@ -72,16 +79,24 @@ warn_unused_ignores = true
 warn_unused_configs = true
 
 [[tool.mypy.overrides]]
-module = ["tests.*"]
-disallow_untyped_defs = false
-disallow_untyped_decorators = false
+module = ["markdown", "markdown.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["pelican.plugins.stat.*"]
 # Ensure full coverage
 disallow_untyped_calls = true
+disallow_untyped_defs = true
 disallow_incomplete_defs = true
+disallow_untyped_decorators = true
 # Restrict dynamic typing
 disallow_any_generics = true
 disallow_subclassing_any = true
 warn_return_any = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_calls = false
 
 
 [tool.ruff]
@@ -91,8 +106,8 @@ line-length = 110
 extend-select = [
     "I",     # Missing required import (auto-fixable)
     "UP",    # Pyupgrade
-    "PT",    # flake8-pytest-style rules
-    "TID25", # flake8-tidy-imports rules
+    "PT",    # Pytest style checks
+    "TID25", # Tidy import checks
 ]
 
 ignore = ["E501", "D1", "D415"]

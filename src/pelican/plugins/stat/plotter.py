@@ -14,9 +14,7 @@ class PelicanDataPlotter:
         self.df.reset_index(inplace=True, drop=True)
         self.df.index += 1
 
-    def draw_trend_plot(
-        self, output_path: str, *, year: int | None = None, groupby_category: bool = False
-    ) -> None:
+    def _build_figure(self, *, year: int | None = None, groupby_category: bool = False) -> go.Figure:
         if year:
             plot_df = self.df[
                 (datetime(year, 1, 1) <= self.df.timestamp) & (self.df.timestamp <= datetime(year, 12, 31))
@@ -47,4 +45,15 @@ class PelicanDataPlotter:
                     mode="lines+markers",
                 )
             )
+        return fig
+
+    def draw_trend_plot(
+        self, output_path: str, *, year: int | None = None, groupby_category: bool = False
+    ) -> None:
+        fig = self._build_figure(year=year, groupby_category=groupby_category)
         fig.write_html(output_path)
+
+    def render_trend_plot_html(self, *, year: int | None = None, groupby_category: bool = False) -> str:
+        fig = self._build_figure(year=year, groupby_category=groupby_category)
+        html: str = fig.to_html(full_html=False, include_plotlyjs=False)
+        return html

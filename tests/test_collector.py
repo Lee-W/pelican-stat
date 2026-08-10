@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 import pelican
-
-from pelican_stat import collector
+from pelican.plugins.stat import collector
 
 
 def test_get_pelican_instance():
