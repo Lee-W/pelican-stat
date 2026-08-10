@@ -1,4 +1,14 @@
 # Changelog
+## 0.4.0 (2026-08-10)
+
+### BREAKING CHANGE
+
+- import paths move from pelican_stat to pelican.plugins.stat and Python 3.11+ is required.
+
+### Feat
+
+- add Pelican writing statistics plugin
+
 ## 0.3.2 (2025-01-29)
 
 ### Fix

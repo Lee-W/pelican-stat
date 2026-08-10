@@ -1,6 +1,6 @@
 [project]
 name = "pelican-stat"
-version = "0.3.2"
+version = "0.4.0"
 authors = [{ name = "Wei Lee", email = "weilee.rx@gmail.com" }]
 description = "Pelican plugin and CLI for generating article statistics"
 license = { file = "LICENSE" }
