@@ -52,7 +52,7 @@ git = ["commitizen>=4.6.0", "pre-commit>=4.0.1"]
 doc = ["mkdocs>=1.6.1", "mkdocs-material>=9.5.50"]
 
 [build-system]
-requires = ["uv_build >= 0.11.25, <0.12.0"]
+requires = ["uv_build >= 0.11.25, < 0.13.0"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
