@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - "*"
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git tag or commit to publish
+        required: true
+        type: string
 
 jobs:
   build-package:
@@ -12,6 +18,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref || github.ref }}
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v7
