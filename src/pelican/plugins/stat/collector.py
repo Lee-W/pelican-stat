@@ -13,10 +13,9 @@ class PelicanArticleDataCollector:
         self.collect_articles()
 
     @staticmethod
-    def _get_pelican_instance(conf_path: str) -> pelican.Pelican:
-        settings = pelican.read_settings(conf_path)
+    def _get_pelican_instance(conf_path: str) -> pelican.Pelican:  # type: ignore[name-defined]
+        settings = pelican.read_settings(conf_path)  # type: ignore[attr-defined]
         settings["PLUGINS"] = []
-        settings["MARKDOWN"] = {}
 
         cls = settings["PELICAN_CLASS"]
         if isinstance(cls, str):
