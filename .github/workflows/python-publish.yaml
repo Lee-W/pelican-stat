@@ -6,8 +6,10 @@ on:
       - "*"
 
 jobs:
-  publish-pypi-package:
+  build-package:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v6
 
@@ -26,8 +28,27 @@ jobs:
         run: |
           inv build.dist
 
+      - name: Upload package distributions
+        uses: actions/upload-artifact@v7
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
+
+  publish-pypi-package:
+    needs: build-package
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pelican-stat
+    permissions:
+      id-token: write
+    steps:
+      - name: Download package distributions
+        uses: actions/download-artifact@v8
+        with:
+          name: python-package-distributions
+          path: dist/
+
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.pypi_password }}
